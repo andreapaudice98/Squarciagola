@@ -198,7 +198,7 @@ function onState(m){const now=performance.now(),Ls=m.lines||S.lines||[],sg=(m.ti
  $('#live').classList.toggle('idle',!m.title)}
 function onMsg(m){if(m.type==='state')onState(m);if(m.type==='msg'){const d=$('#msg');d.textContent=m.text;d.classList.add('on');clearTimeout(mto);mto=setTimeout(()=>d.classList.remove('on'),6000)}
  if(m.type==='countx'){clearInterval(cto);$('#cnt').classList.remove('on')}if(m.type==='count'){let n=3;const c=$('#cnt');c.textContent=n;c.classList.add('on');clearInterval(cto);cto=setInterval(()=>{n--;if(n<=0){clearInterval(cto);c.classList.remove('on')}else c.textContent=n},1000)}}
-function draw(){const t=S.t+(S.playing?(performance.now()-S.at)/1000:0),L=S.lines;const left=S.d?S.d-t:99,tt=(S.nx&&S.playing&&left<=20&&left>0)?'A seguire: '+S.nx:S.title;if($('#ttl').textContent!==tt)$('#ttl').textContent=tt;
+function draw(){const t=S.t+(S.playing?(performance.now()-S.at)/1000:0)+.12,L=S.lines;const left=S.d?S.d-t:99,tt=(S.nx&&S.playing&&left<=20&&left>0)?'A seguire: '+S.nx:S.title;if($('#ttl').textContent!==tt)$('#ttl').textContent=tt;
  const fl=L.length?L[0].t:5,ie=Math.max(2.5,Math.min(5,fl-.8));$('#intro').classList.toggle('on',S.ip!==false&&S.playing&&t<ie&&!!S.ti&&mode!=='testo');if($('#inT').textContent!==S.ti)$('#inT').textContent=S.ti;if($('#inA').textContent!==S.ar)$('#inA').textContent=S.ar;let i=-1;for(let k=0;k<L.length;k++){if(L[k].t<=t)i=k;else break}
  const g=k=>L[k]?L[k].x:'';const na=g(i-1),nb2=g(i+1),nc=g(i+2);if(na!==nb.p)$('#p1').textContent=nb.p=na;if(nb2!==nb.n)$('#n1').textContent=nb.n=nb2;if(nc!==nb.m)$('#n2').textContent=nb.m=nc;
  const txt=i>=0?g(i):g(0);if(txt!==curTxt||i!==lastI){curTxt=txt;lastI=i;$('#cur').textContent=txt;fit();buildRows(txt)}
