@@ -187,7 +187,7 @@ const $=s=>document.querySelector(s),fmt=t=>Math.floor(t/60)+':'+String(Math.flo
 document.querySelectorAll('img[data-l]').forEach(i=>i.src=i.dataset.l==='q'?LOGO_Q:LOGO_S);
 const ls={get:k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const H=location.hash.slice(1),mode=H.split('=')[0]||(window.name==='sqproj'?'proiettore':'');
-function parse(txt){const o=[];txt.split(/\r?\n/).forEach(r=>{const ts=[...r.matchAll(/\[(\d+):(\d+(?:[.:]\d+)?)\]/g)];if(!ts.length)return;const x=r.replace(/\[[^\]]*\]/g,'').replace(/<[^>]*>/g,'').trim();ts.forEach(m=>o.push({t:+m[1]*60++(m[2].replace(':','.')),x}))});return o.sort((a,b)=>a.t-b.t)}
+function parse(txt){const o=[];txt.split(/\r?\n/).forEach(r=>{const ts=[...r.matchAll(/\[(\d+):(\d+(?:[.:]\d+)?)\]/g)];if(!ts.length)return;const x=r.replace(/\[[^\]]*\]/g,'').replace(/<[^>]*>/g,'').trim();ts.forEach(m=>o.push({t:+m[1]*60+ +(m[2].replace(':','.')),x}))});return o.sort((a,b)=>a.t-b.t)}
 
 /* ---- visualizzazione testo (proiettore e telefoni) ---- */
 
