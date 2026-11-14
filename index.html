@@ -100,7 +100,7 @@ input[type=file]{display:block;width:100%;max-width:100%;font-size:12px;color:#c
 .phone .l{font-size:calc(clamp(18px,5.4vw,30px)*var(--k,1))}.phone #cur{font-size:calc(clamp(26px,8vw,46px)*var(--k,1))}.phone #stage{padding:0 1vw 84px}.phone .brand .plate img{height:34px}.phone #ttl{font-size:10px}
 #intro{position:absolute;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3vh;background:radial-gradient(circle at 50% 40%,#0d2a78,#040a1f 70%);opacity:0;pointer-events:none;transition:opacity .9s}
 #intro.on{opacity:1}
-#inT{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(34px,7vw,120px);color:#fff;text-align:center;padding:0 6vw;line-height:1.1}
+#inT{font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:600;font-size:clamp(48px,9vw,140px);color:#fff;text-align:center;padding:0 6vw;line-height:1.1}
 #inA{letter-spacing:.35em;text-transform:uppercase;color:var(--gold2);font-size:clamp(14px,2vw,32px);text-align:center}
 #intro .plate img{height:9vh}
 .rw{display:block;width:fit-content;max-width:100%;margin:0 auto;--p:0%;color:transparent;background:linear-gradient(90deg,var(--gold2) var(--p),#fff var(--p));-webkit-background-clip:text;background-clip:text;animation:lineIn .5s ease-out}
@@ -187,7 +187,7 @@ const $=s=>document.querySelector(s),fmt=t=>Math.floor(t/60)+':'+String(Math.flo
 document.querySelectorAll('img[data-l]').forEach(i=>i.src=i.dataset.l==='q'?LOGO_Q:LOGO_S);
 const ls={get:k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
 const H=location.hash.slice(1),mode=H.split('=')[0]||(window.name==='sqproj'?'proiettore':'');
-function parse(txt){const o=[];txt.split(/\r?\n/).forEach(r=>{const ts=[...r.matchAll(/\[(\d+):(\d+(?:[.:]\d+)?)\]/g)];if(!ts.length)return;const x=r.replace(/\[[^\]]*\]/g,'').replace(/<[^>]*>/g,'').trim();ts.forEach(m=>o.push({t:+m[1]*60+ +m[2].replace(':','.'),x}))});return o.sort((a,b)=>a.t-b.t)}
+function parse(txt){const o=[];txt.split(/\r?\n/).forEach(r=>{const ts=[...r.matchAll(/\[(\d+):(\d+(?:[.:]\d+)?)\]/g)];if(!ts.length)return;const x=r.replace(/\[[^\]]*\]/g,'').replace(/<[^>]*>/g,'').trim();ts.forEach(m=>o.push({t:+m[1]*60++(m[2].replace(':','.')),x}))});return o.sort((a,b)=>a.t-b.t)}
 
 /* ---- visualizzazione testo (proiettore e telefoni) ---- */
 
